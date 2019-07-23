@@ -4,6 +4,8 @@ from datetime import datetime
 import turtle
 import time
 
+# TODO - Switch API call to requests library
+# TODO - Modify string formatting to f'strings
 
 url = 'http://api.open-notify.org/astros.json'
 response = urllib.request.urlopen(url)
