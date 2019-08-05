@@ -14,6 +14,7 @@ class ISS:
         self.lat = self.get_lat()
         self.long = self.get_long()
         self.time = self.get_time()
+        self.astro_str = self.get_astros_string()
 
     def get_astros(self):
         astros = []
@@ -38,16 +39,18 @@ class ISS:
         dt_str = dt_obj.strftime('%m-%d-%Y %H:%M:%S')
         return dt_str
 
+    def get_astros_string(self):
+        separator = ', '
+        return separator.join(self.astros)
+
 
     def write_data(self):
-        data = {'Time': self.time, 'Astronauts': self.astros, 'Latitude':
+        data = {'Time': self.time, 'Astronauts': self.astro_str, 'Latitude':
          self.lat, 'Longitude': self.long}
         df = DataFrame(data=data)
-        try:
-            with open('iss_data.csv', 'w') as file:
-                df.tocsv(file)
-        except:
-            print('WTF IS WRONG!!')
+        with open('iss_data.csv', 'w') as file:
+            df.to_csv(file)
+
 
     # TODO - Build data writing functions to CSV and troubleshoot pandas
     # Check current directory for csv named iss_data.csv
@@ -60,3 +63,4 @@ print(myData.astros)
 print(myData.lat)
 print(myData.long)
 print(myData.time)
+myData.write_data()
