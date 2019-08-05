@@ -45,15 +45,15 @@ class ISS:
 
 
     def write_data(self):
-        data = {'Time': self.time, 'Astronauts': self.astro_str, 'Latitude':
+        data = {'Time': self.time, 'Astronauts': self.astros, 'Latitude':
          self.lat, 'Longitude': self.long}
         df = DataFrame(data=data)
         with open('iss_data.csv', 'w') as file:
             df.to_csv(file)
 
 
-    # TODO - Build data writing functions to CSV and troubleshoot pandas
-    # Check current directory for csv named iss_data.csv
+    # TODO - Build data writing functions to CSV - Don't use Pandas
+    # Still need to figure out if file exists, if not, create headers and append data
     # if exists, continue and append data to it.  It not, create and append data to it
 
 
